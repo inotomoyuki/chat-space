@@ -1,31 +1,38 @@
-# Pictweet DB設計
-## usersテーブル
-|Column|Type|Options|
-|------|----|-------|
-|email|string|null: false, index:true|
-|password|string|null: false, index:true|
-|group|string|null: fallse|
-### Association
-- has_many :tweets
-- has_many :comments
-- belongs_to :groups
+ChatSpaceのDB設計
 
-## tweetsテーブル
+##messagesテーブル
 |Column|Type|Options|
-|------|----|-------|
-|image|text||
-|text|text||
-|user_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :user
-- has_many :comments
+|body|text|
+image|string|
+|user_id |integer|null: false, foreign_key: true|
+|group_id |integer| null: false, foreign_key: true|
+##Association
+belongs_to :group
+belongs_to :user
 
-## commentsテーブル
+##usersテーブル
+|Column |Type |Options|
+|name|string|null: false, add_index: true|
+|email|string|null: false, unique: true|
+|password|string|null: false|
+##Association
+has_many :groups_users
+has_many :groups, through: groups_users
+has_many :messages
+
+##groupsテーブル
 |Column|Type|Options|
-|------|----|-------|
-|text|text|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|tweet_id|integer|null: false, foreign_key: true|
-### Association
-- belongs_to :tweet
-- belongs_to :user
+|group_name|string|null: false, unique: true|
+##Association
+has_many :groups_users
+has_many :users, through: groups_users
+has_many :messages
+
+##groups_usersテーブル
+|Column|Type|Options|
+|user_id| integer|null: false, foreign_key: true|
+|group_id| integer|null: false, foreign_key: true|
+##Association
+belongs_to :group
+belongs_to :user
+
