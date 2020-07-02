@@ -2,7 +2,7 @@
   box-sizing: border-box;
 }
 
-.side-bar {
+.Side-bar {
   width: 300px;
   height:100vh;
   background-color:black;
@@ -19,7 +19,7 @@
       margin: 0 20px;
       display: flex;
       justify-content: space-between;
-      .top-items_icons{
+      &__icons {
         margin-left:5px;
         color: black;
         .icon-edit{
@@ -61,7 +61,7 @@
     height: 100px;
     background-color: floralwhite;
   }
-  .chat-main__message-list {
+  .chat-main_message-list {
     background-color: blanchedalmond;
     height: calc(100vh - 190px);
     padding: 35px 0px 0px 40px;
@@ -108,11 +108,11 @@
 .message{
   display: flex;
   margin-bottom: 12px; 
-  .message-name{
+  &__name{
   color: black;
   font-size: 16px;
   }
-  .message-date{
+  &__date{
     font-size:12px;
     margin-left: 10px;
   }
@@ -143,10 +143,6 @@
       }
     }
   
-    // .form-input-image{
-    //   height: 50px;
-    //   position: absolute;
-    //   margin-right: 10px;  
       .form-fa-image{
         position: absolute;
         height: 50px;
@@ -158,7 +154,7 @@
       .form-input-file{
         display: none;
       }
-    // }   
+     
   .submitbtn{
     background-color: blue;
     border: none;
