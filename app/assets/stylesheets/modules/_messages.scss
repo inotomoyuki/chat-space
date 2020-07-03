@@ -129,42 +129,42 @@
   padding: 20px 50px 20px 40px;
   width: 100%;
 }
-  .form-contents{
-    display: flex;
-    .form-input-contents{
+  
+    .Form_contents{
       position: relative;
       width: 100%;
-      .input-text {
-        border: none;
+      display: flex;
+      
+      &__text{
+        border-style: none;
         height: 50px;
         padding: 0px 45px 0px 15px;
         color: #434A54;
         width: 100%;
       }
-    }
-  
-      .form-fa-image{
+    
+      &__image{
         position: absolute;
         height: 50px;
         line-height: 50px;
         font-size: 25px;
         top: 0;
-        right: 10px; 
-      }
-      .form-input-file{
+        right: 120px; 
+      
+        &__file{
         display: none;
+        }
       }
+    }
      
-  .submitbtn{
+  .Form__submit{
     background-color: blue;
     border: none;
     color: white;
     font-size: 16px;
     height: 50px;
     margin-left: 15px;
-    padding: 0px 30px;
-    
+    padding: 0px 30px; 
   }
-}
     
   

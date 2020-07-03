@@ -2,13 +2,13 @@
   .chat-main_group-info
     .group
       .current-group
-        test
-      .memberlist
-        Member : 
-        .member
-          tomo
-    .icon
-      = link_to "Edit", "#"
+        = @group.name
+      .member
+        Member:
+        - @group.users.each do |member|
+          = member.name   
+    = link_to edit_group_path(@group), class:"icon" do
+      Edit
   .chat-main_message-list
     .message
       .message___name
@@ -24,13 +24,14 @@
         2020/11/20(wed)17:43;01
     .message-body
       おはよう！  
-  
+      .messageField
+        = render @messages
+
   .form
-    .form-contents 
-      .form-input-contents
-        %input{class:"input-text", placeholder:"type a message", type:"text"}
-        .form-fa-image
-          %label{class: "input-box__image"}
-            = icon('fas', 'image')
-            %input.form-input-file{type: "file"}
-      %input.submitbtn{type:"submit",name:"commit",value:"Send"}
+    = form_with model: [@group, @message], html: {class: "Form"}, local: true do |f|
+      .Form_contents
+        = f.text_field :content, class: 'Form_contents__text', placeholder: 'type a message'
+        = f.label :image, class: 'Form_contents__image' do
+          = icon('far', 'image')
+          = f.file_field :image, class: 'Form_contents__image__file'
+        = f.submit 'Send', class: 'Form__submit'
