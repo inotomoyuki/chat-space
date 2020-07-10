@@ -43,7 +43,9 @@ $(function(){
   $('.Form').on('submit', function(e){
     e.preventDefault();
     let formData = new FormData(this);
+ 
     let url = $(this).attr('action');
+
     $.ajax({
       url: url,
       type: "POST",
@@ -53,10 +55,12 @@ $(function(){
       contentType: false
     })
     .done(function(data){
+      console.log(data)
       let html = buildHTML(data);
-      $('.MessageField').append(html);      
+      $('.messageField').append(html);
       $('form')[0].reset();
-      $('.MessageField').animate({ scrollTop: $('.MessageField')[0].scrollHeight});
+      console.log($('.messageField')[0].scrollHeight)
+      $('.chat-main_message-list').animate({ scrollTop: $('.chat-main_message-list')[0].scrollHeight});
       $('.Form__submit').prop("disabled", false);
     })
     .fail(function() {
